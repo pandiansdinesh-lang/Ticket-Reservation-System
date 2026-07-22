@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticket Reservation System</title>
+
+<style>
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f0f8ff;
+    margin:0;
+}
+
+header{
+    background:#4CAF50;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    margin:0;
+    font-size:38px;
+}
+
+header p{
+    margin-top:8px;
+}
+
+section{
+    width:75%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px lightgray;
+}
+
+h2{
+    color:#2e8b57;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:20px;
+}
+
+table,th,td{
+    border:1px solid black;
+}
+
+th{
+    background:#4CAF50;
+    color:white;
+}
+
+th,td{
+    padding:10px;
+    text-align:center;
+}
+
+label{
+    font-weight:bold;
+}
+
+input,select{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    margin-bottom:15px;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    background:#4CAF50;
+    color:white;
+    border:none;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#2e8b57;
+}
+
+footer{
+    background:#4CAF50;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Ticket Reservation System</h1>
+<p>Book Movie, Bus and Train Tickets Easily</p>
+
+</header>
+
+<section>
+
+<h2>Available Tickets</h2>
+
+<table>
+
+<tr>
+<th>Ticket Type</th>
+<th>Price</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>Movie</td>
+<td>₹200</td>
+<td>Available</td>
+</tr>
+
+<tr>
+<td>Bus</td>
+<td>₹500</td>
+<td>Available</td>
+</tr>
+
+<tr>
+<td>Train</td>
+<td>₹800</td>
+<td>Available</td>
+</tr>
+
+</table>
+
+<h2>Ticket Reservation Instructions</h2>
+
+<table>
+
+<tr>
+<th>Ticket Type</th>
+<th>Instructions</th>
+</tr>
+
+<tr>
+<td>Movie</td>
+<td>
+Reach the theatre 15 minutes before the show.<br>
+Carry your booking confirmation.<br>
+Keep your mobile phone in silent mode.
+</td>
+</tr>
+
+<tr>
+<td>Bus</td>
+<td>
+Reach the boarding point 20 minutes early.<br>
+Carry a valid ID proof.<br>
+Follow the driver's instructions.
+</td>
+</tr>
+
+<tr>
+<td>Train</td>
+<td>
+Reach the station 30 minutes before departure.<br>
+Carry your ticket and ID card.<br>
+Check the platform number before boarding.
+</td>
+</tr>
+
+</table>
+
+<h2>Event Highlights</h2>
+
+<ul>
+<li>Easy Online Booking</li>
+<li>Instant Ticket Confirmation</li>
+<li>Safe and Secure Payment</li>
+<li>24×7 Customer Support</li>
+<li>Affordable Ticket Prices</li>
+</ul>
+
+<h2>Booking Rules</h2>
+
+<ol>
+<li>Fill all the required details correctly.</li>
+<li>Select the correct ticket type.</li>
+<li>Tickets once booked cannot be transferred.</li>
+<li>Cancellation is allowed before departure time.</li>
+<li>Carry a valid ID proof while travelling.</li>
+</ol>
+
+<h2>Book Your Ticket</h2>
+
+<form>
+
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name" required>
+
+<label>Email Address</label>
+<input type="email" placeholder="Enter your email" required>
+
+<label>Mobile Number</label>
+<input type="tel" placeholder="Enter mobile number" required>
+
+<label>Select Ticket Type</label>
+
+<select required>
+<option>Movie</option>
+<option>Bus</option>
+<option>Train</option>
+</select>
+
+<label>Journey / Show Date</label>
+<input type="date" required>
+
+<label>Number of Tickets</label>
+<input type="number" min="1" max="10" required>
+
+<button type="submit">Book Ticket</button>
+
+</form>
+
+</section>
+
+<footer>
+
+<p>Ticket Reservation System </p>
+
+</footer>
+
+</body>
+</html>

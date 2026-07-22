@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Shopping Website</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+header{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+nav{
+    background:#222;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:yellow;
+}
+
+section{
+    padding:20px;
+}
+
+h2{
+    margin-bottom:15px;
+}
+
+.products{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
+
+article{
+    background:white;
+    width:300px;
+    margin:15px;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px gray;
+    text-align:center;
+}
+
+article img{
+    width:220px;
+    height:180px;
+    border-radius:10px;
+}
+
+button{
+    background:green;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:darkgreen;
+}
+
+form{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+input,select{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+input[type=submit]{
+    background:#0d6efd;
+    color:white;
+    border:none;
+}
+
+video{
+    width:100%;
+    max-width:800px;
+}
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:20px;
+}
+
+canvas{
+    border:2px solid black;
+}
+
+#cart{
+    width:300px;
+    height:180px;
+    border:3px dashed blue;
+    text-align:center;
+    padding-top:70px;
+    font-size:22px;
+    background:#fff;
+    margin:auto;
+}
+
+</style>
+
+<script>
+
+function allowDrop(ev)
+{
+    ev.preventDefault();
+}
+
+function drag(ev)
+{
+    ev.dataTransfer.setData("text",ev.target.id);
+}
+
+function drop(ev)
+{
+    ev.preventDefault();
+
+    var data=ev.dataTransfer.getData("text");
+
+    ev.target.appendChild(document.getElementById(data));
+}
+
+function getLocation()
+{
+    if(navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    else
+    {
+        document.getElementById("location").innerHTML="Geolocation not supported.";
+    }
+}
+
+function showPosition(position)
+{
+    document.getElementById("location").innerHTML=
+    "Latitude : "+position.coords.latitude+
+    "<br>Longitude : "+position.coords.longitude;
+}
+
+</script>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🛒 Dinesh Online Shopping</h1>
+
+<p>Best Products at Best Prices</p>
+
+</header>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Products</a>
+
+<a href="#">Offers</a>
+
+<a href="#">Contact</a>
+
+</nav>
+
+<section>
+
+<h2>Featured Products</h2>
+
+<div class="products">
+
+<article>
+
+<img
+id="drag1"
+src="Laptop.png"
+alt="Laptop"
+draggable="true"
+ondragstart="drag(event)">
+
+<h3>Laptop</h3>
+
+<p><b>Price :</b> ₹55,000</p>
+
+<p>Availability</p>
+
+<meter value="80" min="0" max="100"></meter>
+
+<br><br>
+
+<button>Add to Cart</button>
+
+</article>
+
+<article>
+
+<img src="apple.webp" alt="Mobile">
+
+<h3>Smart Phone</h3>
+
+<p><b>Price :</b> ₹25,000</p>
+
+<p>Sale Progress</p>
+
+<progress value="70" max="100"></progress>
+
+<br><br>
+
+<button>Add to Cart</button>
+
+</article>
+
+<article>
+
+<img src="headphone.png" alt="Headphones">
+
+<h3>Headphones</h3>
+
+<p><b>Price :</b> ₹2,999</p>
+
+<br>
+
+<button>Add to Cart</button>
+
+</article>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Drag and Drop Shopping Cart</h2>
+
+<div
+id="cart"
+ondrop="drop(event)"
+ondragover="allowDrop(event)">
+
+Drop Laptop Here
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Image Map</h2>
+
+<img src="Laptop.png" usemap="#workmap" width="350">
+
+<map name="workmap">
+
+<area
+shape="rect"
+coords="20,20,300,180"
+href="#"
+alt="Laptop">
+
+</map>
+
+</section>
+
+<section>
+
+<h2>Customer Registration</h2>
+
+<form>
+
+<label>Name</label>
+
+<input type="text" required>
+
+<label>Email</label>
+
+<input type="email" required>
+
+<label>Password</label>
+
+<input type="password" required>
+
+<label>Phone Number</label>
+
+<input type="tel">
+
+<label>Date of Birth</label>
+
+<input type="date">
+
+<label>Favorite Color</label>
+
+<input type="color">
+
+<label>Quantity</label>
+
+<input type="number" min="1" max="10">
+
+<label>Select Product</label>
+
+<select>
+
+<option>Laptop</option>
+
+<option>Mobile</option>
+
+<option>Headphones</option>
+
+</select>
+
+<input type="submit" value="Register">
+
+</form>
+
+</section>
+
+<section>
+
+<h2>Product Demo Video</h2>
+
+<video controls>
+
+<source src="online.mp4" type="video/mp4">
+
+Your browser does not support video.
+
+</video>
+
+</section>
+
+<section>
+
+<h2>Shopping Music</h2>
+
+<audio controls>
+
+<source src="music.mp3" type="audio/mpeg">
+
+Your browser does not support audio.
+
+</audio>
+
+</section>
+
+<section>
+
+<h2>Store Location</h2>
+
+<button onclick="getLocation()">
+
+Show My Location
+
+</button>
+
+<br><br>
+
+<p id="location"></p>
+
+</section>
+
+<section>
+
+<h2>Special Offer</h2>
+
+<details>
+
+<summary><b>Click Here to View Offer</b></summary>
+
+<p>🎉 Flat 20% Discount on Electronics.</p>
+
+<p>🚚 Free Delivery on Orders Above ₹1000.</p>
+
+</details>
+
+</section>
+
+<section>
+
+<h2>Shopping Logo using Canvas</h2>
+
+<canvas id="canvas" width="400" height="120"></canvas>
+
+<script>
+
+var c=document.getElementById("canvas");
+
+var ctx=c.getContext("2d");
+
+ctx.fillStyle="blue";
+
+ctx.fillRect(20,20,360,70);
+
+ctx.font="30px Arial";
+
+ctx.fillStyle="white";
+
+ctx.fillText("ONLINE SHOPPING",40,65);
+
+</script>
+
+</section>
+
+<footer>
+
+<h3>Dinesh Online Shopping</h3>
+
+<p>© 2026 All Rights Reserved.</p>
+
+</footer>
+
+</body>
+
+</html>
