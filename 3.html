@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Shopping System</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<h1>Online Shopping System</h1>
+
+<table>
+
+<tr>
+<td>
+<img src="phone.png" alt="Phone">
+</td>
+
+<td>
+<h2>Samsung S26</h2>
+<p>Latest AI Smartphone with Snapdragon Processor.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="mac.jpg" alt="Mac">
+</td>
+
+<td>
+<h2>Apple MacBook M5</h2>
+<p>Fast laptop for programming, AI and gaming.</p>
+</td>
+</tr>
+
+<tr>
+<td>
+<img src="650.jpg" alt="Bike">
+</td>
+
+<td>
+<h2>Continental GT 650</h2>
+<p>Powerful Royal Enfield Bike with 650cc engine.</p>
+</td>
+</tr>
+
+</table>
+
+<br>
+
+<button onclick="getLocation()">Show Latitude and Longitude</button>
+
+<p id="demo"></p>
+
+<script>
+
+function getLocation(){
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(showPosition,showError);
+
+}
+
+else{
+
+document.getElementById("demo").innerHTML="Geolocation is not supported.";
+
+}
+
+}
+
+function showPosition(position){
+
+document.getElementById("demo").innerHTML=
+
+"Latitude : " + position.coords.latitude +
+
+"<br>Longitude : " + position.coords.longitude;
+
+}
+
+function showError(error){
+
+switch(error.code){
+
+case error.PERMISSION_DENIED:
+
+document.getElementById("demo").innerHTML="Permission Denied";
+
+break;
+
+case error.POSITION_UNAVAILABLE:
+
+document.getElementById("demo").innerHTML="Location Unavailable";
+
+break;
+
+case error.TIMEOUT:
+
+document.getElementById("demo").innerHTML="Request Timed Out";
+
+break;
+
+default:
+
+document.getElementById("demo").innerHTML="Unknown Error";
+
+}
+
+}
+
+</script>
+
+<footer>
+
+<p>© SRD</p>
+
+</footer>
+
+</body>
+</html>
