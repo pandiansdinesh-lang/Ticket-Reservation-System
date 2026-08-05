@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Portal</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#c8e6c9; /* Changed background color to green */
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    width:500px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#333;
+}
+
+label{
+    font-weight:bold;
+}
+
+input, select, textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+.gender{
+    width:auto;
+    margin-right:5px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+}
+
+input[type=submit],input[type=reset]{
+    width:48%;
+    padding:10px;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+input[type=submit]{
+    background:rgb(255, 0, 0);
+}
+
+input[type=submit]:hover{
+    background:darkgreen;
+}
+
+input[type=reset]{
+    background:rgb(0, 0, 0);
+}
+
+input[type=reset]:hover{
+    background:darkred;
+}
+
+.checkbox{
+    width:auto;
+}
+</style>
+
+<script>
+function validateForm()
+{
+    var name=document.getElementById("name").value.trim();
+    var email=document.getElementById("email").value.trim();
+    var mobile=document.getElementById("mobile").value.trim();
+    var password=document.getElementById("password").value;
+    var cpassword=document.getElementById("cpassword").value;
+    var dob=document.getElementById("dob").value;
+    var qualification=document.getElementById("qualification").value;
+    var experience=document.getElementById("experience").value;
+    var city=document.getElementById("city").value.trim();
+    var address=document.getElementById("address").value.trim();
+    var jobrole=document.getElementById("jobrole").value;
+    var resume=document.getElementById("resume").value;
+    var gender=document.querySelector('input[name="gender"]:checked');
+    var terms=document.getElementById("terms").checked;
+
+    var namePattern=/^[A-Za-z ]+$/;
+    var emailPattern=/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    var mobilePattern=/^[0-9]{10}$/;
+    var passwordPattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{6,}$/;
+    var resumePattern=/(\.pdf|\.doc|\.docx)$/i;
+
+    if(name=="")
+    {
+        alert("Please enter your name.");
+        return false;
+    }
+
+    if(!namePattern.test(name))
+    {
+        alert("Name should contain only alphabets.");
+        return false;
+    }
+
+    if(!emailPattern.test(email))
+    {
+        alert("Enter a valid email address.");
+        return false;
+    }
+
+    if(!mobilePattern.test(mobile))
+    {
+        alert("Enter a valid 10-digit mobile number.");
+        return false;
+    }
+
+    if(!passwordPattern.test(password))
+    {
+        alert("Password must contain at least 6 characters, one uppercase, one lowercase, one number and one special character.");
+        return false;
+    }
+
+    if(password!=cpassword)
+    {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+    if(dob=="")
+    {
+        alert("Select Date of Birth.");
+        return false;
+    }
+
+    if(gender==null)
+    {
+        alert("Select Gender.");
+        return false;
+    }
+
+    if(qualification=="")
+    {
+        alert("Select Qualification.");
+        return false;
+    }
+
+    if(experience=="" || experience<0 || experience>40)
+    {
+        alert("Enter valid experience (0-40 years).");
+        return false;
+    }
+
+    if(city=="")
+    {
+        alert("Enter City.");
+        return false;
+    }
+
+    if(address=="")
+    {
+        alert("Enter Address.");
+        return false;
+    }
+
+    if(jobrole=="")
+    {
+        alert("Select Preferred Job Role.");
+        return false;
+    }
+
+    if(resume=="")
+    {
+        alert("Upload Resume.");
+        return false;
+    }
+
+    if(!resumePattern.exec(resume))
+    {
+        alert("Upload only PDF, DOC or DOCX files.");
+        return false;
+    }
+
+    if(!terms)
+    {
+        alert("Please accept Terms and Conditions.");
+        return false;
+    }
+
+    alert("Registration Successful!");
+    return true;
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Job Portal User Registration</h2>
+
+<form onsubmit="return validateForm()">
+
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Enter your name">
+
+<label>Email</label>
+<input type="email" id="email" placeholder="Enter your email">
+
+<label>Mobile Number</label>
+<input type="text" id="mobile" placeholder="9876543210">
+
+<label>Password</label>
+<input type="password" id="password" placeholder="Enter password">
+
+<label>Confirm Password</label>
+<input type="password" id="cpassword" placeholder="Confirm password">
+
+<label>Date of Birth</label>
+<input type="date" id="dob">
+
+<label>Gender</label><br><br>
+
+<input class="gender" type="radio" name="gender" value="Male">Male
+<input class="gender" type="radio" name="gender" value="Female">Female
+<input class="gender" type="radio" name="gender" value="Other">Other
+
+<br><br>
+
+<label>Qualification</label>
+<select id="qualification">
+<option value="">Select Qualification</option>
+<option>B.E/B.Tech</option>
+<option>B.Sc</option>
+<option>BCA</option>
+<option>M.E/M.Tech</option>
+<option>MCA</option>
+<option>M.Sc</option>
+<option>MBA</option>
+</select>
+
+<label>Experience (Years)</label>
+<input type="number" id="experience" min="0" max="40">
+
+<label>Preferred Job Role</label>
+<select id="jobrole">
+<option value="">Select Job Role</option>
+<option>Software Developer</option>
+<option>Web Developer</option>
+<option>Java Developer</option>
+<option>Python Developer</option>
+<option>Data Analyst</option>
+<option>UI/UX Designer</option>
+</select>
+
+<label>Skills</label>
+<textarea rows="4" placeholder="Example: HTML, CSS, JavaScript, Java"></textarea>
+
+<label>City</label>
+<input type="text" id="city">
+
+<label>Address</label>
+<textarea id="address" rows="3"></textarea>
+
+<label>LinkedIn Profile</label>
+<input type="url" placeholder="https://linkedin.com/in/username">
+
+<label>Upload Resume</label>
+<input type="file" id="resume">
+
+<input class="checkbox" type="checkbox" id="terms">
+I accept the Terms and Conditions
+
+<br><br>
+
+<div class="buttons">
+<input type="submit" value="Register">
+<input type="reset" value="Reset">
+</div>
+
+</form>
+
+</div>
+
+</body>
+</html>
